@@ -16,3 +16,6 @@ dist
 
 # TypeScript cache
 *.tsbuildinfo
+
+# Cursor settings
+.cursor
