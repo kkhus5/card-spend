@@ -13,6 +13,7 @@
         "prepare": "husky"
     },
     "devDependencies": {
+        "@karat/typescript-config": "workspace:*",
         "@changesets/cli": "^2.31.0",
         "@eslint/js": "^10.0.1",
         "eslint": "^10.6.0",
@@ -41,7 +42,8 @@
     },
     "pnpm": {
         "onlyBuiltDependencies": [
-            "esbuild"
+            "esbuild",
+            "mongodb-memory-server"
         ]
     }
 }
