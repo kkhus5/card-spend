@@ -7,6 +7,12 @@ export type Address = {
     postalCode: string;
 };
 
+export type DateOfBirth = {
+    day: number;
+    month: number;
+    year: number;
+};
+
 /**
  * Domain type for a customer/cardholder in our system.
  */
@@ -20,9 +26,14 @@ export interface Customer {
     paymentProcessorId: string;
 
     /**
-     * The customer's name.
+     * The customer's first name.
      */
-    name: string;
+    firstName: string;
+
+    /**
+     * The customer's last name.
+     */
+    lastName: string;
 
     /**
      * The customer's phone number.
@@ -43,6 +54,11 @@ export interface Customer {
      * Optional secondary address of customer.
      */
     secondaryAddress: Address | null;
+
+    /**
+     * The customer's date of birth.
+     */
+    dob: DateOfBirth;
 
     /**
      * Timestamp of when customer record was created in our system.
