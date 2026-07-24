@@ -1,6 +1,6 @@
 import { HydratedDocument, model, Schema, Types } from "mongoose";
 
-import { Address, Customer } from "./types.js";
+import { Address, Customer, DateOfBirth } from "./types.js";
 
 /**
  * Document fields with `_id` as `ObjectId` instead of `string`.
@@ -28,14 +28,25 @@ const AddressSchema = new Schema<Address>(
     { timestamps: false },
 );
 
+const DateOfBirthSchema = new Schema<DateOfBirth>(
+    {
+        day: { type: Number, required: true },
+        month: { type: Number, required: true },
+        year: { type: Number, required: true },
+    },
+    { timestamps: false },
+);
+
 const CustomerSchema = new Schema<CustomerDocumentFields>(
     {
         paymentProcessorId: { type: String, required: true, unique: true },
-        name: { type: String, required: true },
+        firstName: { type: String, required: true },
+        lastName: { type: String, required: true },
         phoneNumber: { type: String, required: true },
         email: { type: String, required: true },
         primaryAddress: { type: AddressSchema, required: true },
         secondaryAddress: { type: AddressSchema, required: false },
+        dob: { type: DateOfBirthSchema, required: true },
     },
     { timestamps: true },
 );
