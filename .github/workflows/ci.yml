@@ -78,3 +78,19 @@ jobs:
 
             - name: Run Tests
               run: pnpm test
+
+    deploy:
+        name: Deploy to Heroku
+        runs-on: ubuntu-latest
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        needs: [quality, test]
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - uses: akhileshns/heroku-deploy@v3.13.15
+              with:
+                  heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+                  heroku_app_name: ${{ vars.HEROKU_APP_NAME }}
+                  heroku_email: ${{ vars.HEROKU_EMAIL }}

@@ -10,7 +10,9 @@
         "check-types": "turbo run check-types",
         "check:circular": "depcruise --config .dependency-cruiser.cjs apps/server/src",
         "test": "turbo run test",
-        "prepare": "husky"
+        "prepare": "husky",
+        "heroku-postbuild": "pnpm --filter @karat/server build",
+        "start": "pnpm --filter @karat/server start"
     },
     "devDependencies": {
         "@karat/typescript-config": "workspace:*",
@@ -28,8 +30,8 @@
     },
     "packageManager": "pnpm@10.4.1",
     "engines": {
-        "node": ">=22",
-        "pnpm": ">=10"
+        "node": "22.x",
+        "pnpm": "10.x"
     },
     "lint-staged": {
         "*.{ts,tsx}": [

@@ -6,6 +6,7 @@ import rateLimit from "express-rate-limit";
 import { serverPort } from "./config/index.js";
 import { connectMongoose } from "./config/mongoConfig.js";
 import { v1Router } from "./routes/v1/index.js";
+import { webhooksRouter } from "./routes/webhooks/index.js";
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(express.json());
 app.get("/", (_, res) => res.send("Welcome to the Karat server."));
 app.get("/health", (_, res) => res.json({ status: "ok" }));
 app.use("/api/v1", v1Router);
+app.use("/webhooks", webhooksRouter);
 
 const setup = async () => {
     await connectMongoose();
