@@ -23,6 +23,14 @@ export const createCardholder = async (customer: Customer): Promise<string> => {
                         month: customer.dob.month,
                         year: customer.dob.year,
                     },
+                    card_issuing: {
+                        user_terms_acceptance: {
+                            // TODO: Implement a user-facing flow to capture actual
+                            // terms acceptance (IP + timestamp) before creating cardholder.
+                            date: Math.floor(Date.now() / 1000),
+                            ip: "0.0.0.0",
+                        },
+                    },
                 },
                 billing: {
                     address: {
