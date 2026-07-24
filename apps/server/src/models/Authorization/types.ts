@@ -5,7 +5,7 @@ export enum AuthorizationStatus {
 }
 
 export enum AuthorizationCurrency {
-    USD = "USD",
+    USD = "usd",
 }
 
 export type MerchantAddress = {
