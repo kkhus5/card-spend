@@ -18,12 +18,12 @@ const limiter = rateLimit({
 });
 
 app.use(limiter);
+app.use("/webhooks", express.raw({ type: "application/json" }), webhooksRouter);
 app.use(express.json());
 
 app.get("/", (_, res) => res.send("Welcome to the Karat server."));
 app.get("/health", (_, res) => res.json({ status: "ok" }));
 app.use("/api/v1", v1Router);
-app.use("/webhooks", webhooksRouter);
 
 const setup = async () => {
     await connectMongoose();
